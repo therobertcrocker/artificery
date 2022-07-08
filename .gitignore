@@ -1,4 +1,4 @@
 *.pyc
 *.pyo
 __pycache__/
-**/__pycache__/
+artificery/__pycache__/
