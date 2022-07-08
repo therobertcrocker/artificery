@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "artificery"
+version = "0.1.0"
+description = "A database manager for the Ulsidor Project"
+authors = ["Aduain"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typer = {extras = ["all"], version = "^0.5.0"}
+pymongo = {extras = ["srv"], version = "^4.1.1"}
+pandas = "^1.4.3"
+
+[tool.poetry.scripts]
+artificery = "artificery.main:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

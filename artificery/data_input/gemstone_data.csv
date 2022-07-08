@@ -1,0 +1,73 @@
+name,value,spell_slots,max_level,is_fragile
+Azurite,10,5,2,true
+Banded Agate,10,3,2,true
+Blue Quartz,10,4,2,false
+Eye Agate,10,3,2,true
+Hematite,10,3,2,true
+Lapis Lazuli,10,4,2,true
+Agate,10,3,2,true
+Malachite,25,6,3,false
+Moss Agate,25,5,3,true
+Obsidian,25,5,3,false
+Rhodochrosite,25,6,3,true
+Tiger Eye,25,4,3,true
+Blue Agate,25,5,3,true
+Bloodstone,50,5,4,false
+Chalcedony,50,7,4,true
+Carnelian,50,6,4,true
+Chrysoprase,50,5,4,false
+Citrine,50,7,4,true
+Jasper,50,7,4,true
+Moonstone,50,7,4,false
+Quartz,50,6,4,true
+Sardonyx,50,5,4,true
+Zircon,50,5,4,true
+Amber,100,7,5,false
+Amethyst,100,8,5,false
+Chrysoberyl,100,7,5,true
+Coral,100,9,5,false
+Garnet,100,8,5,true
+Jade,100,7,5,true
+Star Rose Quartz,100,7,5,false
+Onyx,100,9,5,true
+Jet,250,10,6,true
+Pearl,250,10,6,false
+Spinel,250,11,6,true
+Tourmaline,250,10,6,false
+Bllue Onyx,250,9,6,true
+Star Garnet,250,12,6,true
+Vermillion Quartz,250,11,6,false
+Ocher Amethyst,250,11,6,false
+Orichalum,250,12,6,false
+Black Pearl,500,14,7,false
+Aquamarine,500,15,7,false
+Alexandrite,500,15,7,false
+Blue Spinel,500,12,7,false
+Peridot,500,14,7,false
+Topaz,500,15,7,false
+Magenta Rose Quartz,750,14,8,false
+Amalgam Amberite,750,16,8,false
+Sanguinite,750,15,8,true
+Clear Spinel,750,14,8,false
+Black Topaz,750,14,8,false
+Black Opal,1000,18,9,false
+Blue Saphire,1000,18,9,false
+Emerald,1000,17,9,false
+Fire Opal,1000,17,9,false
+Opal,1000,17,9,false
+Ruby,1000,16,9,false
+Yellow Sapphire,1000,17,9,false
+Black Sanguinite,2500,21,9,false
+Black Rose Saphire,2500,19,9,false
+Fire Amethyst,2500,18,9,false
+Star Emerald,2500,18,9,false
+Star Saphire,2500,20,9,false
+Tortoiseshell,2500,21,9,false
+Black Saphire,5000,25,9,false
+Diamond,5000,23,9,false
+Jacinth,5000,23,9,false
+Star Ruby,5000,24,9,false
+Star Pearl,5000,24,9,false
+Rose Ichor,5000,23,9,false
+Triton Saphire,5000,23,9,false
+Storm Opal,5000,25,9,true
