@@ -98,34 +98,25 @@ def make_gemstone(uncut_gem):
 def make_gemstones(gem_list):
     gems = []
     for uncut_gem in gem_list:
-        gem = {
-            NAME: uncut_gem[NAME],
-            VALUE: {
-                AMOUNT: uncut_gem[VALUE],
-                UNIT: GOLD
-            },
-            CAPACITY: {
-                SLOTS: uncut_gem[SLOTS],
-                MAX_LEVEL: uncut_gem[MAX_LEVEL],
-                IS_FRAGILE: uncut_gem[IS_FRAGILE]
-            },
-            DATA: uncut_gem[DATA]
-        }
-        gems.append(gem)
+        gems.append(make_gemstone(uncut_gem))
     return gems
 
 
 # --------------------------------------- Typer Commands -----------------------------------------------------
 
 @app.command("add")
-def add_gemstones(file: str):
+def add_gemstones(file: str, debug: bool = typer.Option(False, help="print the results to test if working")):
     """
     Add gemstones to database from csv file
     """
     try:
         gem_list = artificer.make_items(file, GEMSTONE)
         gems = make_gemstones(gem_list)
-        db.gemstones.insert_many(gems)
+        if debug:
+            for gem in gems:
+                typer.echo(gem)
+        else:
+            db.gemstones.insert_many(gems)
     except Exception as e:
         typer.echo("an exception occured", e)
     else:
@@ -133,7 +124,7 @@ def add_gemstones(file: str):
 
 
 @app.command("add_one")
-def add_gemstone(name: str, value: str):
+def add_gemstone(value: str, name: str, debug: bool = typer.Option(False, help="print the results to test if working")):
     """
     add single gemstone to database from command line
     """
@@ -141,7 +132,10 @@ def add_gemstone(name: str, value: str):
     try:
         uncut_gem = artificer.make_item(GEMSTONE, name=name, value=value)
         gem = make_gemstone(uncut_gem)
-        db.gemstones.insert_one(gem)
+        if debug:
+            typer.echo(gem)
+        else:
+            db.gemstones.insert_one(gem)
     except Exception as e:
         typer.echo("an exception occured", e)
     else:
