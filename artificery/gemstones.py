@@ -1,6 +1,6 @@
 import typer
 from artificery.database import Database
-from artificery import artificer 
+from artificery import artificer
 import random
 
 # --------------------------------------- Constants ----------------------------------------------------------
@@ -11,7 +11,7 @@ VALUE = "value"
 NAME = "name"
 AMOUNT = "amount"
 UNIT = "unit"
-GOLD = 'gp'
+GOLD = "gp"
 CAPACITY = "magical_capacity"
 SLOTS = "spell_slots"
 MAX_LEVEL = "max_level"
@@ -31,12 +31,20 @@ app = typer.Typer()
 
 # --------------------------------------- Functions ----------------------------------------------------------
 
+
 def set_capacity(fragility, tier):
     capacity = {}
     slot_ranges = [
-        [3, 5], [4, 6], [5, 7],
-        [7, 9], [9, 12], [12, 15],
-        [14, 16], [16, 19], [18, 21]]
+        [3, 5],
+        [4, 6],
+        [5, 7],
+        [7, 9],
+        [9, 12],
+        [12, 15],
+        [14, 16],
+        [16, 19],
+        [18, 21],
+    ]
 
     low_bound = slot_ranges[tier][0]
     high_bound = slot_ranges[tier][1]
@@ -48,13 +56,14 @@ def set_capacity(fragility, tier):
     else:
         capacity[IS_FRAGILE] = False
 
+
 def get_capacity(value):
     capacity = {}
     fragility = random.randint(1, 10)
 
     if value <= 10:
         capacity = set_capacity(fragility, 0)
-        
+
     elif value > 10 and value <= 25:
         capacity = set_capacity(fragility, 1)
 
@@ -85,12 +94,9 @@ def get_capacity(value):
 def make_gemstone(uncut_gem):
     gem = {
         NAME: uncut_gem[NAME],
-        VALUE: {
-            AMOUNT: uncut_gem[VALUE],
-            UNIT: GOLD
-        },
+        VALUE: {AMOUNT: uncut_gem[VALUE], UNIT: GOLD},
         CAPACITY: get_capacity(uncut_gem[VALUE]),
-        DATA: uncut_gem[DATA]
+        DATA: uncut_gem[DATA],
     }
     return gem
 
@@ -104,8 +110,12 @@ def make_gemstones(gem_list):
 
 # --------------------------------------- Typer Commands -----------------------------------------------------
 
+
 @app.command("add")
-def add_gemstones(file: str, debug: bool = typer.Option(False, help="print the results to test if working")):
+def add_gemstones(
+    file: str,
+    debug: bool = typer.Option(False, help="print the results to test if working"),
+):
     """
     Add gemstones to database from csv file
     """
@@ -124,7 +134,11 @@ def add_gemstones(file: str, debug: bool = typer.Option(False, help="print the r
 
 
 @app.command("add_one")
-def add_gemstone(value: str, name: str, debug: bool = typer.Option(False, help="print the results to test if working")):
+def add_gemstone(
+    value: str,
+    name: str,
+    debug: bool = typer.Option(False, help="print the results to test if working"),
+):
     """
     add single gemstone to database from command line
     """

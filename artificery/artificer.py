@@ -11,6 +11,7 @@ TAGS = "tags"
 
 # --------------------------------------- Data Handling ------------------------------------------------------
 
+
 def parse_csv(file):
     file_path = DATA_DIR + file
     try:
@@ -23,10 +24,7 @@ def parse_csv(file):
 
 def make_item(loot_type, **fields):
     item = fields
-    item[DATA] = {
-        LOOT_TYPE: loot_type,
-        TAGS: []
-    }
+    item[DATA] = {LOOT_TYPE: loot_type, TAGS: []}
     return item
 
 
@@ -36,4 +34,3 @@ def make_items(file, item_type):
     for item in raw_items:
         items_list.append(make_item(item_type, **item))
     return items_list
-
