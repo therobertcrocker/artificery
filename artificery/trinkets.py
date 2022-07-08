@@ -1,9 +1,6 @@
-from curses import raw
-from sre_constants import CATEGORY
 import typer
 from artificery.database import Database
 from artificery import artificer 
-
 # --------------------------------------- Constants ----------------------------------------------------------
 
 TRINKETS = "trinkets"
