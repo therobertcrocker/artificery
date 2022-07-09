@@ -1,19 +1,11 @@
 import typer
 from artificery.database import Database
 from artificery import artificer
+from artificery import forge
 
 # --------------------------------------- Constants ----------------------------------------------------------
 
-TRINKETS = "trinkets"
 TRINKET = "trinket"
-CATEGORY = "category"
-DESCRIPTION = "description"
-IS_NESTED = "is_nested"
-GROUP = "nested_group"
-PROPERTIES = "properties"
-
-DATA = "loot_data"
-
 
 # --------------------------------------- Pymongo Setup ------------------------------------------------------
 
@@ -22,35 +14,6 @@ db = Database()
 # --------------------------------------- Typer Setup --------------------------------------------------------
 
 app = typer.Typer()
-
-
-# --------------------------------------- Functions ----------------------------------------------------------
-
-
-def get_properties(description):
-    properties = {}
-    if "<" in description:
-        properties[IS_NESTED] = True
-        properties[GROUP] = description.split("<")[1].split(">")[0]
-
-    return properties
-
-
-def make_trinket(raw_trinket):
-    trinket = {}
-    trinket[CATEGORY] = raw_trinket[CATEGORY]
-    trinket[DESCRIPTION] = raw_trinket[DESCRIPTION]
-    trinket[PROPERTIES] = get_properties(raw_trinket[DESCRIPTION])
-    trinket[DATA] = raw_trinket[DATA]
-    return trinket
-
-
-def make_trinkets(trinket_list):
-    trinkets = []
-    for raw_trinket in trinket_list:
-        trinkets.append(make_trinket(raw_trinket))
-    return trinkets
-
 
 # --------------------------------------- Typer Commands -----------------------------------------------------
 
@@ -65,7 +28,7 @@ def add_trinkets(
     """
     try:
         trinket_list = artificer.make_items(file, TRINKET)
-        trinkets = make_trinkets(trinket_list)
+        trinkets = forge.make_trinkets(trinket_list)
         if debug:
             for trinket in trinkets:
                 typer.echo(trinket)
@@ -90,7 +53,7 @@ def add_trinket(
         raw_trinket = artificer.make_item(
             TRINKET, category=category, description=description
         )
-        trinket = make_trinket(raw_trinket)
+        trinket = forge.make_trinket(raw_trinket)
         if debug:
             typer.echo(trinket)
         else:
