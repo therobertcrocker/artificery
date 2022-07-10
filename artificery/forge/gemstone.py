@@ -1,3 +1,4 @@
+from typing import Any
 from artificery.database import Database
 import random
 
@@ -23,7 +24,7 @@ db = Database()
 # --------------------------------------- Functions ----------------------------------------------------------
 
 
-def set_capacity(fragility, tier):
+def set_capacity(fragility: int, tier: int):
     capacity = {}
     slot_ranges = [
         [3, 5],
@@ -48,7 +49,7 @@ def set_capacity(fragility, tier):
         capacity[IS_FRAGILE] = False
 
 
-def get_capacity(value):
+def get_capacity(value: int):
     capacity = {}
     fragility = random.randint(1, 10)
 
@@ -82,7 +83,7 @@ def get_capacity(value):
     return capacity
 
 
-def make_gemstone(uncut_gem):
+def make_gemstone(uncut_gem: dict[str, Any]):
     gem = {
         NAME: uncut_gem[NAME],
         VALUE: {AMOUNT: uncut_gem[VALUE], UNIT: GOLD},
@@ -92,7 +93,7 @@ def make_gemstone(uncut_gem):
     return gem
 
 
-def make_gemstones(gem_list):
+def make_gemstones(gem_list: list[dict[str, Any]]):
     gems = []
     for uncut_gem in gem_list:
         gems.append(make_gemstone(uncut_gem))

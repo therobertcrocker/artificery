@@ -12,8 +12,8 @@ TAGS = "tags"
 # --------------------------------------- Data Handling ------------------------------------------------------
 
 
-def parse_csv(file):
-    file_path = DATA_DIR + file
+def parse_csv(filename: str):
+    file_path = DATA_DIR + filename
     try:
         items = pandas.read_csv(file_path).to_dict(orient="records")
     except Exception as e:

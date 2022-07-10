@@ -20,14 +20,14 @@ app = typer.Typer()
 
 @app.command("add")
 def add_gemstones(
-    file: str,
+    filename: str,
     debug: bool = typer.Option(False, help="print the results to test if working"),
 ):
     """
     Add gemstones to database from csv file
     """
     try:
-        gem_list = artificer.make_items(file, GEMSTONE)
+        gem_list = artificer.make_items(filename, GEMSTONE)
         gems = forge.make_gemstones(gem_list)
         if debug:
             for gem in gems:
@@ -37,7 +37,7 @@ def add_gemstones(
     except Exception as e:
         typer.echo("an exception occured", e)
     else:
-        typer.echo(f"added gemstones to database from {file}")
+        typer.echo(f"added gemstones to database from {filename}")
 
 
 @app.command("add_one")

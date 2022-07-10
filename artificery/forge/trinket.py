@@ -1,4 +1,5 @@
 
+from typing import Any
 from artificery.database import Database
 
 
@@ -20,7 +21,7 @@ db = Database()
 # --------------------------------------- Functions ----------------------------------------------------------
 
 
-def get_properties(description):
+def get_properties(description: str):
     properties = {}
     if "<" in description:
         properties[IS_NESTED] = True
@@ -29,7 +30,7 @@ def get_properties(description):
     return properties
 
 
-def make_trinket(raw_trinket):
+def make_trinket(raw_trinket: dict[str, Any]):
     trinket = {}
     trinket[CATEGORY] = raw_trinket[CATEGORY]
     trinket[DESCRIPTION] = raw_trinket[DESCRIPTION]
@@ -38,7 +39,7 @@ def make_trinket(raw_trinket):
     return trinket
 
 
-def make_trinkets(trinket_list):
+def make_trinkets(trinket_list: list[dict[str, Any]]):
     trinkets = []
     for raw_trinket in trinket_list:
         trinkets.append(make_trinket(raw_trinket))

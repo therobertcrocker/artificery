@@ -20,14 +20,14 @@ app = typer.Typer()
 
 @app.command("add")
 def add_trinkets(
-    file: str,
+    filename: str,
     debug: bool = typer.Option(False, help="print the results to test if working"),
 ):
     """
     Add trinkets to database from csv file
     """
     try:
-        trinket_list = artificer.make_items(file, TRINKET)
+        trinket_list = artificer.make_items(filename, TRINKET)
         trinkets = forge.make_trinkets(trinket_list)
         if debug:
             for trinket in trinkets:
@@ -37,7 +37,7 @@ def add_trinkets(
     except Exception as e:
         typer.echo("an exception occured", e)
     else:
-        typer.echo(f"added trinkets to database from {file}")
+        typer.echo(f"added trinkets to database from {filename}")
 
 
 @app.command("add_one")
