@@ -1,5 +1,5 @@
 import typer
-from artificery.database import Database
+from artificery import database
 from artificery import artificer
 from artificery import forge
 
@@ -9,7 +9,7 @@ TRINKET = "trinket"
 
 # --------------------------------------- Pymongo Setup ------------------------------------------------------
 
-db = Database()
+db = database.db
 
 # --------------------------------------- Typer Setup --------------------------------------------------------
 

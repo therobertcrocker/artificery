@@ -1,5 +1,4 @@
 from typing import Any
-from artificery.database import Database
 import random
 
 # --------------------------------------- Constants ----------------------------------------------------------
@@ -15,11 +14,6 @@ MAX_LEVEL = "max_level"
 IS_FRAGILE = "is_fragile"
 
 DATA = "loot_data"
-
-
-# --------------------------------------- Pymongo Setup ------------------------------------------------------
-
-db = Database()
 
 # --------------------------------------- Functions ----------------------------------------------------------
 

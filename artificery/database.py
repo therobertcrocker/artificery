@@ -7,12 +7,9 @@ GEMSTONES = "gemstones"
 TRINKETS = "trinkets"
 
 
-class Database:
-
-    def __init__(self) -> None:
-        self.client = MongoClient(CONNECTION_STRING_LOCAL)
-        self.db = self.client[LOOT_DATA]
-        self.gemstones = self.db[GEMSTONES]
-        self.trinkets = self.db[TRINKETS]
-
+client = MongoClient(CONNECTION_STRING_LOCAL)
+db = client[LOOT_DATA]
+gemstones = db[GEMSTONES]
+trinkets = db[TRINKETS]
+        
     
